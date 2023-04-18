@@ -23,6 +23,16 @@
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
   <body>
+    <script>
+      let completedImgCnt = 0;
+
+      const loadingImg = () => {
+        completedImgCnt = completedImgCnt + 1
+        if (completedImgCnt === 9){
+          $("#loadingWrap").addClass("open")
+        }
+      }
+    </script>
     <div id="loadingWrap">
       <div class="bg"></div>
       <lottie-player src="./img/pencil.json" background="transparent"  speed="1"  style="width: 400px; height: 400px;" loop autoplay></lottie-player>
@@ -71,7 +81,7 @@
               <dl>
                 <dt>
                   <span class="profile__img">
-                    <img id="img1" src="./img/profile/caribo.png" alt="Caribo 캐리커처">
+                    <img onload="loadingImg()" id="img1" src="./img/profile/caribo.png" alt="Caribo 캐리커처">
                   </span>
                 </dt>
                 <dd>
@@ -112,10 +122,10 @@
         <!-- 어망결에 로맨스 -->
         <section id="section2">
           <div class="inner">
-            <img id="img2" src="./img/section2/poster.png" alt="어망결에 로맨스 포스터">
+            <img onload="loadingImg()" id="img2" src="./img/section2/poster.png" alt="어망결에 로맨스 포스터">
             <dl>
               <dt>
-                <img id="img3" src="./img/section2/logo.png" alt="어망결에 로맨스 로고">
+                <img onload="loadingImg()" id="img3" src="./img/section2/logo.png" alt="어망결에 로맨스 로고">
               </dt>
               <dd>
                 <ul>
@@ -141,10 +151,10 @@
         <!-- 제3경호팀 -->
         <section id="section3">
           <div class="inner">
-            <img id="img4" src="./img/section3/poster.png" alt="제3경호팀 포스터">
+            <img onload="loadingImg()" id="img4" src="./img/section3/poster.png" alt="제3경호팀 포스터">
             <dl>
               <dt>
-                <img id="img5" src="./img/section3/logo.png" alt="제3경호팀 로고">
+                <img onload="loadingImg()" id="img5" src="./img/section3/logo.png" alt="제3경호팀 로고">
               </dt>
               <dd>
                 <ul>
@@ -161,10 +171,10 @@
         <!-- 청년시장 -->
         <section id="section4">
           <div class="inner">
-            <img id="img6" src="./img/section4/poster.png" alt="청년시장 포스터">
+            <img onload="loadingImg()" id="img6" src="./img/section4/poster.png" alt="청년시장 포스터">
             <dl>
               <dt>
-                <img id="img7" src="./img/section4/logo.png" alt="청년시장 로고">
+                <img onload="loadingImg()" id="img7" src="./img/section4/logo.png" alt="청년시장 로고">
               </dt>
               <dd>
                 <ul>
@@ -182,10 +192,10 @@
         <!-- 오해가 계속되면 오예입니다 -->
         <section id="section5">
           <div class="inner">
-            <img id="img8" src="./img/section5/poster.png" alt="오해가 계속되면 오예입니다 포스터">
+            <img onload="loadingImg()" id="img8" src="./img/section5/poster.png" alt="오해가 계속되면 오예입니다 포스터">
             <dl>
               <dt>
-                <img id="img9" src="./img/section5/logo.png" alt="오해가 계속되면 오예입니다 로고">
+                <img onload="loadingImg()" id="img9" src="./img/section5/logo.png" alt="오해가 계속되면 오예입니다 로고">
               </dt>
               <dd>
                 <ul>
@@ -213,20 +223,7 @@
     <script>
       $(document).ready(function () {
         console.log("test img loading--------------------")
-        $("#loadingWrap").addClass("open")
-
-        // let completedImgCnt = 0;
-        // for(let i = 1 ; i < 10 ; i  ++){
-        //   console.log(i)
-        //   $(`#img${i}`).load(function() {
-        //     if(completedImgCnt === 9){
-        //      console.log("완료")
-        //     } else {
-        //      completedImgCnt += 1
-        //      console.log(completedImgCnt)
-        //     }
-        //   })
-        // }
+        // $("#loadingWrap").addClass("open")  
         
         let scrollY = 0;
         let screenHeight = screen.height;
