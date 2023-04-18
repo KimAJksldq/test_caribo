@@ -8,9 +8,9 @@
     <meta name="description" content="안녕하세요 웹툰작가 카리보입니다. 이 사이트는 지금까지 제 작업물을 모아놓은 웹사이트입니다!">
     <meta name="author" content="CARIBO">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
+    <meta property="og:url" content="https://kimajksldq.github.io/test_caribo" />
     <meta property="og:title" content="웹툰작가 카리보 포트폴리오입니다.">
-    <!--<meta property="og:image" content="/public/img/logo.png">-->
+    <meta property="og:image" content="./img/thumbnail.jpg">
     <meta property="og:description" content="안녕하세요 웹툰작가 카리보입니다. 이 사이트는 지금까지 제 작업물을 모아놓은 웹사이트입니다!">
     <meta property="og:site_name" content="웹툰작가 CARIBO 포트폴리오" />
     <meta property="og:locale" content="en_US">
@@ -24,18 +24,18 @@
   </head>
   <body>
     <script>
-      let completedImgCnt = 0;
+    let completedImgCnt = 0;
 
-      const loadingImg = () => {
-        completedImgCnt = completedImgCnt + 1
-        if (completedImgCnt === 9){
-          $("#loadingWrap").addClass("open")
-        }
+    const loadingImg = () => {
+      completedImgCnt = completedImgCnt + 1
+      if (completedImgCnt === 9){
+        $("#loadingWrap").addClass("open")
       }
+    }
     </script>
     <div id="loadingWrap">
       <div class="bg"></div>
-      <lottie-player src="./img/pencil.json" background="transparent"  speed="1"  style="width: 400px; height: 400px;" loop autoplay></lottie-player>
+      <lottie-player src="./img/pencil.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay></lottie-player>
     </div>
     <nav>
       <ul>
@@ -222,9 +222,6 @@
     </main>
     <script>
       $(document).ready(function () {
-        console.log("test img loading--------------------")
-        // $("#loadingWrap").addClass("open")  
-        
         let scrollY = 0;
         let screenHeight = screen.height;
         const sectionArray  = [

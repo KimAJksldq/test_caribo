@@ -1,95 +1,109 @@
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"
+    />
+    <link rel="stylesheet" href="./css/testpagecss.css" />
+    <title>Ionic Swipe Down</title>
+    <link href="./css/card1.css" rel="stylesheet" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/card1.js"></script>
+    <script src="./js/card2.js"></script>
+    <script src="./js/card3.js"></script>
+    <script>
+      $(function () {
+        $('td-card').click(function () {
+          console.log($(this));
+        });
+      });
+    </script>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  <link rel="stylesheet" href="./css/testpagecss.css">
-  <title>Ionic Swipe Down</title>
-  <link href="./css/card1.css" rel="stylesheet">
-  <script src="./js/card1.js"></script>
-  <script src="./js/card2.js"></script>
-  <script src="./js/card3.js"></script>
-</head>
-
-<body>
-  <div ng-app="starter" no-scroll>
-    <ion-pane ng-controller="CardsCtrl">
+  <body>
+    <div ng-app="starter" no-scroll>
+      <ion-pane ng-controller="CardsCtrl">
         <ion-header-bar class="bar-default">
           <h1 class="title">TD Cards</h1>
         </ion-header-bar>
-    
-        <td-cards>
-          <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+
+        <td-cards id="tdCards">
+          <td-card
+            ng-repeat="card in cards"
+            on-destroy="cardDestroyed($index)"
+            on-swipe-left="cardSwipedLeft($index)"
+            on-swipe-right="cardSwipedRight($index)"
+            on-partial-swipe="cardPartialSwipe(amt)"
+            class="card-{{$index}}"
+          >
             <div class="image" ng-controller="CardCtrl">
               <div class="no-text">NOPE</div>
-              <img ng-src="{{card.image}}">
+              <img ng-src="{{card.image}}" />
               <div class="yes-text">LIKE</div>
             </div>
           </td-card>
         </td-cards>
       </ion-pane>
-  </div>
-  <script>
-    angular
-  .module("starter", ["ionic", "ionic.contrib.ui.tinderCards"])
+    </div>
+    <script>
+      angular
+        .module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
 
-  .directive("noScroll", function ($document) {
-    return {
-      restrict: "A",
-      link: function ($scope, $element, $attr) {
-        $document.on("touchmove", function (e) {
-          e.preventDefault();
+        .directive('noScroll', function ($document) {
+          return {
+            restrict: 'A',
+            link: function ($scope, $element, $attr) {
+              $document.on('touchmove', function (e) {
+                e.preventDefault();
+              });
+            },
+          };
+        })
+
+        .controller('CardsCtrl', function ($scope, TDCardDelegate) {
+          console.log('CARDS CTRL');
+          var cardTypes = [
+            {
+              image:
+                'https://designwith.co.kr/wp-content/uploads/2020/03/%ED%8E%B8%EC%A7%91%EB%94%94%EC%9E%90%EC%9D%B8%EC%9A%A9%EC%96%B4-%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg',
+            },
+            {
+              image:
+                'https://jpassets.jobplanet.co.kr/production/uploads/material/media/6392/2_main.jpg',
+            },
+            {
+              image: 'https://pbs.twimg.com/media/Fsg31dLaEAA9JzE?format=jpg&name=large',
+            },
+            {
+              image:
+                'https://img.freepik.com/premium-vector/hand-drawn-fashion-designer-illustrated_52683-54790.jpg',
+            },
+          ];
+
+          $scope.cards = Array.prototype.slice.call(cardTypes, 0);
+
+          $scope.cardDestroyed = function (index) {
+            $scope.cards.splice(index, 1);
+          };
+
+          $scope.addCard = function () {
+            var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+            newCard.id = Math.random();
+            $scope.cards.push(angular.extend({}, newCard));
+          };
+        })
+
+        .controller('CardCtrl', function ($scope, TDCardDelegate) {
+          $scope.cardSwipedLeft = function (index) {
+            console.log('LEFT SWIPE');
+            $scope.addCard();
+          };
+          $scope.cardSwipedRight = function (index) {
+            console.log('RIGHT SWIPE');
+            $scope.addCard();
+          };
         });
-      }
-    };
-  })
-
-  .controller("CardsCtrl", function ($scope, TDCardDelegate) {
-    console.log("CARDS CTRL");
-    var cardTypes = [
-      {
-        image:
-          "https://designwith.co.kr/wp-content/uploads/2020/03/%ED%8E%B8%EC%A7%91%EB%94%94%EC%9E%90%EC%9D%B8%EC%9A%A9%EC%96%B4-%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
-      },
-      {
-        image:
-          "https://jpassets.jobplanet.co.kr/production/uploads/material/media/6392/2_main.jpg"
-      },
-      {
-        image:
-          "https://pbs.twimg.com/media/Fsg31dLaEAA9JzE?format=jpg&name=large"
-      },
-      {
-        image:
-          "https://designwith.co.kr/wp-content/uploads/2020/03/%ED%8E%B8%EC%A7%91%EB%94%94%EC%9E%90%EC%9D%B8%EC%9A%A9%EC%96%B4-%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
-      }
-    ];
-
-    $scope.cards = Array.prototype.slice.call(cardTypes, 0);
-
-    $scope.cardDestroyed = function (index) {
-      $scope.cards.splice(index, 1);
-    };
-
-    $scope.addCard = function () {
-      var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-      newCard.id = Math.random();
-      $scope.cards.push(angular.extend({}, newCard));
-    };
-  })
-
-  .controller("CardCtrl", function ($scope, TDCardDelegate) {
-    $scope.cardSwipedLeft = function (index) {
-      console.log("LEFT SWIPE");
-      $scope.addCard();
-    };
-    $scope.cardSwipedRight = function (index) {
-      console.log("RIGHT SWIPE");
-      $scope.addCard();
-    };
-  });
-
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
