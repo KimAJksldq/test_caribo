@@ -367,7 +367,10 @@
                         .children()
                         .children()
                         .eq(i)
-                        .css({ zIndex: imgCount - i });
+                        .css({
+                          zIndex: imgCount - i,
+                          transform: `translate3d(0px, ${String(i * 14)}px, 0px) `,
+                        });
                     }
                   });
                 },
@@ -453,7 +456,7 @@
                 if (!card) continue;
                 if (i > 0) {
                   card.style.transform = card.style.webkitTransform =
-                    'translate3d(0, ' + i * 4 + 'px, 0)';
+                    'translate3d(0, ' + i * 14 + 'px, 0)';
                 }
                 card.style.zIndex = existingCards.length - i;
               }

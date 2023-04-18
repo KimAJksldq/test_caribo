@@ -1,5 +1,6 @@
-.td-cards td-card:first-of-type img{
+.td-cards td-card:first-of-type img {
   filter: blur(0px);
+  -webkit-transform: translateX(-50%) scale(1.1) translateY(-14px);
   opacity: 1;
 }
 td-card {
@@ -26,20 +27,20 @@ td-card .image {
 }
 
 td-card img {
-  filter: blur(2.5px);
-  opacity: .8;
+  /* filter: blur(2.5px); */
+  opacity: 0.3;
   border: 1px solid #999;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   position: absolute;
-  max-width: 360px;
   left: 50%;
   -webkit-transform: translateX(-50%);
-  max-height: 100%;
+  width: 300px;
+  height: 200px;
   border-radius: 6px;
   -webkit-transition: all 0.15s ease 0s;
 }
 
-td-card > div{
+td-card > div {
   height: 100%;
 }
 
