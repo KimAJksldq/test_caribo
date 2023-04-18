@@ -113,6 +113,28 @@ main > .inner > section > .inner {
   /* background: white; */
   overflow: hidden;
 }
+#loadingWrap.open{
+  display: none;
+}
+#loadingWrap {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#loadingWrap > .bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+}
 @media screen and (max-width: 1280px) {
   main > .inner {
     width: 85%;

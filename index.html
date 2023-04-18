@@ -16,12 +16,17 @@
     <meta property="og:locale" content="en_US">
     <meta name="google-site-verification" content="al2TR8ofBW3b_Ia-uvwNrmpv85Zcs0VL6Fzof0Is7Jc" />
     <title>웹툰작가 카리보입니다.</title>
+    <script src="./js/lottie.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery.smoothwheel.js"></script>
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
   <body>
+    <div id="loadingWrap">
+      <div class="bg"></div>
+      <lottie-player src="./img/pencil.json" background="transparent"  speed="1"  style="width: 400px; height: 400px;" loop autoplay></lottie-player>
+    </div>
     <nav>
       <ul>
         <li class="on">
@@ -207,7 +212,22 @@
     </main>
     <script>
       $(document).ready(function () {
-        // img 개수 9개
+        console.log("test img loading--------------------")
+        $("#loadingWrap").addClass("open")
+
+        // let completedImgCnt = 0;
+        // for(let i = 1 ; i < 10 ; i  ++){
+        //   console.log(i)
+        //   $(`#img${i}`).load(function() {
+        //     if(completedImgCnt === 9){
+        //      console.log("완료")
+        //     } else {
+        //      completedImgCnt += 1
+        //      console.log(completedImgCnt)
+        //     }
+        //   })
+        // }
+        
         let scrollY = 0;
         let screenHeight = screen.height;
         const sectionArray  = [
