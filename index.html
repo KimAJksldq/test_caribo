@@ -19,6 +19,11 @@
     <script src="./js/lottie.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery.smoothwheel.js"></script>
+    <script src="./js/card1.js"></script>
+    <script src="./js/card2.js"></script>
+    <script src="./js/card3.js"></script>
+    <link href="./css/card1.css" rel="stylesheet" />
+    <link href="./css/card2.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
@@ -67,6 +72,12 @@
           <span class="icon"></span>
           <span>
             <p>오해가 계속되면 오예입니다.</p>
+          </span>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span>
+            <p>갤러리</p>
           </span>
         </li>
       </ul>
@@ -129,15 +140,15 @@
               </dt>
               <dd>
                 <ul>
-                  <li>
+                  <li class="bomtoon">
                     <a href="https://bomtoon.com/comic/ep_list/unguarded" target="_blank">
-                      <img src="./img/bomtoon.png" alt="봄푼 로고">
+                      <img src="./img/bomtoon.png" alt="봄툰 로고">
                     </a>
                   </li>
-                  <li>
+                  <li class="ktoon">
                     <a href="https://myktoon.com/web/works/list.kt?worksseq=10800" target="_blank"> <img src="./img/ktoon.png" alt="케이툰 로고"></a>
                   </li>
-                  <li>
+                  <li class="naver">
                     <a href="https://series.naver.com/comic/detail.series?productNo=8571043" target="_blank">
                        <img src="./img/naver.png" alt="네이버 시리즈 로고">
                     </a>
@@ -158,7 +169,7 @@
               </dt>
               <dd>
                 <ul>
-                  <li>
+                  <li class="lezhin">
                     <a href="https://www.lezhin.com/ko/comic/3rd_security" target="_blank">
                        <img src="./img/lezhin.png" alt="레진코믹스 로고">
                     </a>
@@ -178,7 +189,7 @@
               </dt>
               <dd>
                 <ul>
-                  <li>
+                  <li class="kakao">
                     <a href="https://page.kakao.com/content/50392468" target="_blank">
                        <img src="./img/kakao.png" alt="카카오페이지 로고">
                     </a>
@@ -199,16 +210,16 @@
               </dt>
               <dd>
                 <ul>
-                  <li>
+                  <li class="bomtoon">
                     <a href="https://www.bomtoon.com/comic/ep_list/oheoye" target="_blank">
                       <img src="./img/bomtoon.png" alt="봄툰 로고">
                     </a>
                   </li>
-                  <li>
+                  <li class="lezhin">
                     <a href="https://www.lezhin.com/ko/comic/oheoye" target="_blank">
                       <img src="./img/lezhin.png" alt="레진코믹스 로고"></a>
                   </li>
-                  <li>
+                  <li class="naver">
                     <a href="https://series.naver.com/comic/detail.series?productNo=8046457" target="_blank">
                        <img src="./img/naver.png" alt="네이버 시리즈 로고">
                     </a>
@@ -218,6 +229,35 @@
           </div>
         </section>
         <!-- // 오해가 계속되면 오예입니다  -->
+        <!-- 갤러리 -->
+        <section id="section6">
+          <div class="inner" ng-app="starter" no-scroll>
+            <ion-pane ng-controller="CardsCtrl">
+              <!-- <ion-header-bar class="bar-default">
+                <h3 class="gallery__title">TD Cards</h1>
+                <h4 class="gallery__sub__title">이미지 카드를 넘기거나 클릭해보세요</h1>
+              </ion-header-bar> -->
+      
+              <td-cards id="tdCards">
+                <td-card
+                  ng-repeat="card in cards"
+                  on-destroy="cardDestroyed($index)"
+                  on-swipe-left="cardSwipedLeft($index)"
+                  on-swipe-right="cardSwipedRight($index)"
+                  on-partial-swipe="cardPartialSwipe(amt)"
+                  class="card-{{$index}}"
+                >
+                  <div class="image" ng-controller="CardCtrl">
+                    <div class="no-text">NOPE</div>
+                    <img ng-src="{{card.image}}" />
+                    <div class="yes-text">LIKE</div>
+                  </div>
+                </td-card>
+              </td-cards>
+            </ion-pane>
+          </div>
+        </section>
+        <!-- // 갤러리 -->
       </div>
     </main>
     <script>
@@ -230,6 +270,7 @@
           $("#section3"),
           $("#section4"),
           $("#section5"),
+          $("#section6"),
         ]
 
         $("nav ul>li>.icon").click(function () {
@@ -269,7 +310,7 @@
               } 
             } else if (direction === "Scroll Up") {
               for(let i = 0 ; i < sectionArray.length ; i ++) {
-                if(sectionArray[i][0].offsetTop + $(sectionArray[i][0]).height() < $("main").scrollTop()) {
+                if(sectionArray[i][0].offsetTop + $(sectionArray[i][0]).height() / 2 < $("main").scrollTop()) {
                   if(scrollY < i) {
                     scrollY = i;
                     activeSection(i)
@@ -303,6 +344,66 @@
         })
         $("main").smoothWheel();
       });
+    </script>
+    <!--  -->
+     <script>
+      angular
+        .module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
+
+        .directive('noScroll', function ($document) {
+          return {
+            restrict: 'A',
+            link: function ($scope, $element, $attr) {
+              $document.on('touchmove', function (e) {
+                e.preventDefault();
+              });
+            },
+          };
+        })
+
+        .controller('CardsCtrl', function ($scope, TDCardDelegate) {
+          console.log('CARDS CTRL');
+          var cardTypes = [
+            {
+              image:
+                './img/test_img.jpg',
+            },
+            {
+              image:
+                './img/test_img.jpg',
+            },
+            {
+              image: './img/test_img.jpg',
+            },
+            {
+              image:
+                './img/test_img.jpg',
+            },
+          ];
+
+          $scope.cards = Array.prototype.slice.call(cardTypes, 0);
+
+          $scope.cardDestroyed = function (index) {
+            $scope.cards.splice(index, 1);
+          };
+
+          $scope.addCard = function () {
+            var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+            newCard.id = Math.random();
+            $scope.cards.push(angular.extend({}, newCard));
+          };
+        })
+
+        .controller('CardCtrl', function ($scope, TDCardDelegate) {
+          $scope.cardSwipedLeft = function (index) {
+            console.log('LEFT SWIPE');
+            $scope.addCard();
+          };
+          $scope.cardSwipedRight = function (index) {
+            console.log('RIGHT SWIPE');
+            $scope.addCard();
+          };
+        });
     </script>
   </body>
 </html>

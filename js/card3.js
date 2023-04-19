@@ -352,25 +352,27 @@
                     const y = 4 * (imgCount - 1);
                     // $scope.onDestroy();
                     $($element).css({
-                      transform: `translate3d(0px, ${String(y)}px, 0px) rotate(0rad)`,
+                      transform: `translate3d(0px, ${String($($element).index() * 20)}px, 0px) rotate(0rad)`,
                     });
-                    $($element).removeClass('card-0');
-                    $($element).insertAfter('#tdCards .td-cards  td-card:last-child');
-                    for (let i = 0; i < imgCount; i++) {
-                      $('#tdCards')
-                        .children()
-                        .children()
-                        .eq(i)
-                        .removeClass(`card-${i + 1}`);
-                      $('#tdCards').children().children().eq(i).addClass(`card-${i}`);
-                      $('#tdCards')
-                        .children()
-                        .children()
-                        .eq(i)
-                        .css({
-                          zIndex: imgCount - i,
-                          transform: `translate3d(0px, ${String(i * 14)}px, 0px) `,
-                        });
+                    if($($element).attr("class") === 'card-0'){
+                      $($element).removeClass('card-0');
+                      $($element).insertAfter('#tdCards .td-cards  td-card:last-child');
+                      for (let i = 0; i < imgCount; i++) {
+                        $('#tdCards')
+                          .children()
+                          .children()
+                          .eq(i)
+                          .removeClass(`card-${i + 1}`);
+                        $('#tdCards').children().children().eq(i).addClass(`card-${i}`);
+                        $('#tdCards')
+                          .children()
+                          .children()
+                          .eq(i)
+                          .css({
+                            zIndex: imgCount - i,
+                            transform: `translate3d(0px, ${String(i * 20)}px, 0px) `,
+                          });
+                      }
                     }
                   });
                 },
@@ -456,7 +458,7 @@
                 if (!card) continue;
                 if (i > 0) {
                   card.style.transform = card.style.webkitTransform =
-                    'translate3d(0, ' + i * 14 + 'px, 0)';
+                    'translate3d(0, ' + i * 20 + 'px, 0)';
                 }
                 card.style.zIndex = existingCards.length - i;
               }

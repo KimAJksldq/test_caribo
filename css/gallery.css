@@ -1,0 +1,8 @@
+.td-cards{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-75%);
+    height: 300px;
+    width: 50px;
+}

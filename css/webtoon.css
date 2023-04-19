@@ -43,11 +43,37 @@ main > .inner > section > .inner > dl dd ul {
 }
 main > .inner > section > .inner > dl dd ul li {
   margin-left: 32px;
-  opacity: 0.5;
+  opacity: 0.1;
   width: 40px;
   height: 40px;
   overflow: hidden;
+  background: white;
+  padding: 8px;
+  border-radius: 100px;
+  box-shadow: 0 10px 20px -6px rgba(0,0,0,0.5);
+  -webkit-transition: all 0.15s ease-in-out 0.35s;
 }
+main > .inner > section > .inner > dl dd ul li.naver{
+  background: #00DC64;
+  box-shadow: 0 10px 20px -6px #00DC64;
+}
+main > .inner > section > .inner > dl dd ul li.kakao{
+  background: #FFBC00;
+  box-shadow: 0 10px 20px -6px #FFBC00;
+}
+main > .inner > section > .inner > dl dd ul li.bomtoon{
+  background: #FF33AC;
+  box-shadow: 0 10px 20px -6px #FF33AC;
+}
+main > .inner > section > .inner > dl dd ul li.lezhin{
+  background: #EB1C22;
+  box-shadow: 0 10px 20px -6px #EB1C22;
+}
+main > .inner > section > .inner > dl dd ul li.ktoon{
+  background: #FCCC30;
+  box-shadow: 0 10px 20px -6px #FCCC30;
+}
+
 main > .inner > section > .inner > dl dd ul li:hover {
   opacity: 1;
 }
@@ -59,9 +85,14 @@ main > .inner > section > .inner > dl dd ul li a {
   width: 100%;
   height: 100%;
   position: relative;
-  top: -40px;
+  top: -50px;
   -webkit-transition: all 0.15s ease-in-out 0.35s;
 }
+
+main > .inner > section.on > .inner > dl dd ul li {
+  opacity: 1;
+}
+
 main > .inner > section.on > .inner > dl dd ul li a {
   top: 0px;
 }
