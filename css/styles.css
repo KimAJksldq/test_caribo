@@ -80,11 +80,15 @@ main::-webkit-scrollbar-thumb {
 }
 
 main {
-  overflow: auto;
+  overflow: hidden;
   /*-webkit-overflow-scrolling: touch;*/
   position: relative;
   width: 100%;
   height: 100vh;
+}
+
+main.scroll{
+  overflow: auto;
 }
 
 main > .inner {

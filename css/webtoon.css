@@ -44,8 +44,8 @@ main > .inner > section > .inner > dl dd ul {
 main > .inner > section > .inner > dl dd ul li {
   margin-left: 32px;
   opacity: 0.1;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   background: white;
   padding: 8px;
@@ -74,9 +74,9 @@ main > .inner > section > .inner > dl dd ul li.ktoon{
   box-shadow: 0 10px 20px -6px #FCCC30;
 }
 
-main > .inner > section > .inner > dl dd ul li:hover {
+/* main > .inner > section > .inner > dl dd ul li:hover {
   opacity: 1;
-}
+} */
 main > .inner > section > .inner > dl dd ul li:first-of-type {
   margin-left: 0px;
 }
@@ -105,5 +105,12 @@ main > .inner > section > .inner > dl dd ul li a img {
 @media screen and (max-width: 1536px) {
   main > .inner > section > .inner > dl dt {
     max-width: 240px;
+  }
+}
+@media screen and (max-width: 650px) {
+  main > .inner > section > .inner > dl dd ul li {
+    width: 40px;
+    height: 40px;
+    margin-left: 22px;
   }
 }

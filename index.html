@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="웹툰작가, 디자이너, 프리랜서, 디자인">
-    <meta name="description" content="안녕하세요 웹툰작가 카리보입니다. 이 사이트는 지금까지 제 작업물을 모아놓은 웹사이트입니다!">
+    <meta name="description" content="안녕하세요 웹툰작가 카리보의 작업물 아카이빙입니다.">
     <meta name="author" content="CARIBO">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kimajksldq.github.io/test_caribo" />
-    <meta property="og:title" content="웹툰작가 카리보 포트폴리오입니다.">
+    <meta property="og:title" content="웹툰작가 카리보 포트폴리오">
     <meta property="og:image" content="./img/thumbnail.jpg">
-    <meta property="og:description" content="안녕하세요 웹툰작가 카리보입니다. 이 사이트는 지금까지 제 작업물을 모아놓은 웹사이트입니다!">
-    <meta property="og:site_name" content="웹툰작가 CARIBO 포트폴리오" />
+    <meta property="og:description" content="안녕하세요 웹툰작가 카리보의 작업물 아카이빙입니다.">
+    <meta property="og:site_name" content="카리보의 작업물 아카이빙" />
     <meta property="og:locale" content="en_US">
     <meta name="google-site-verification" content="al2TR8ofBW3b_Ia-uvwNrmpv85Zcs0VL6Fzof0Is7Jc" />
-    <title>웹툰작가 카리보입니다.</title>
+    <title>웹툰작가 카리보 포트폴리오</title>
     <script src="./js/lottie.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery.smoothwheel.js"></script>
@@ -30,10 +30,9 @@
   <body>
     <script>
     let completedImgCnt = 0;
-
     const loadingImg = () => {
       completedImgCnt = completedImgCnt + 1
-      if (completedImgCnt === 9){
+      if (completedImgCnt === 13){
         $("#loadingWrap").addClass("open")
       }
     }
@@ -82,7 +81,7 @@
         </li>
       </ul>
     </nav>
-    <main id="main">
+    <main id="main" class="scroll">
       <div class="inner">
         <!-- 카리보 프로필 -->
         <section id="section1" class="s1 on">
@@ -249,10 +248,11 @@
                 >
                   <div class="image" ng-controller="CardCtrl">
                     <div class="no-text">NOPE</div>
-                    <img ng-src="{{card.image}}" />
+                    <img onload="loadingImg()" ng-src="{{card.image}}" />
                     <div class="yes-text">LIKE</div>
                   </div>
                 </td-card>
+                <p class="notice">이미지를 넘기거나 클릭하세요.</p>
               </td-cards>
             </ion-pane>
           </div>
@@ -276,29 +276,29 @@
         $("nav ul>li>.icon").click(function () {
           const idx = $(this).parent().index();
           if(scrollY < idx) {
-            $('main').animate({scrollTop : sectionArray[idx][0].offsetTop + 10 }, 400);
+            $('#main').animate({scrollTop : sectionArray[idx][0].offsetTop + 10 }, 400);
           } else {
-            $('main').animate({scrollTop : sectionArray[idx][0].offsetTop - 10  }, 400);
-            $('main').animate({scrollTop : sectionArray[idx][0].offsetTop + 0.0001 }, 10);
+            $('#main').animate({scrollTop : sectionArray[idx][0].offsetTop - 10  }, 400);
+            $('#main').animate({scrollTop : sectionArray[idx][0].offsetTop + 0.0001 }, 10);
           }
         });
 
         let lastScrollY = 0;
-        $("main").scroll(function(){
-            const lScrollY = $("main").scrollTop();
+        $("#main.scroll").scroll(function(){
+            const lScrollY = $("#main").scrollTop();
             // 이전의 스크롤 위치와 비교하기
             const direction = lScrollY > lastScrollY ? "Scroll Down" : "Scroll Up";
              // 현재의 스크롤 값을 저장
             lastScrollY = lScrollY;
             if(direction === "Scroll Down"){
               for(let i = 0 ; i < sectionArray.length ; i ++) {
-                if(sectionArray[i][0].offsetTop - 20 < $("main").scrollTop()) {
+                if(sectionArray[i][0].offsetTop - 20 < $("#main").scrollTop()) {
                   if(scrollY < i) {
                     scrollY = i;
                     activeSection(i)
                   } 
                 } else {
-                  if($("main").scrollTop() === 0) {
+                  if($("#main").scrollTop() === 0) {
                     scrollY = 0
                     activeSection(0)
                   }
@@ -310,13 +310,13 @@
               } 
             } else if (direction === "Scroll Up") {
               for(let i = 0 ; i < sectionArray.length ; i ++) {
-                if(sectionArray[i][0].offsetTop + $(sectionArray[i][0]).height() / 2 < $("main").scrollTop()) {
+                if(sectionArray[i][0].offsetTop + $(sectionArray[i][0]).height() / 2 < $("#main").scrollTop()) {
                   if(scrollY < i) {
                     scrollY = i;
                     activeSection(i)
                   } 
                 } else {
-                  if($("main").scrollTop() === 0) {
+                  if($("#main").scrollTop() === 0) {
                     scrollY = 0
                     activeSection(0)
                   }
@@ -331,18 +331,18 @@
 
         const activeSection = (idx) => {
           $("nav ul>li").removeClass("on")
-          $("main>.inner>section").removeClass("on")
+          $("#main>.inner>section").removeClass("on")
           $("nav ul>li").eq(idx).addClass("on")
-          $("main>.inner>section").eq(idx).addClass("on")
+          $("#main>.inner>section").eq(idx).addClass("on")
         }
 
         $(window).resize(function(){
           if(screenHeight < $(window).height()){
             screenHeight = $(window).height()
-            $("main").smoothWheel();
+            $("#main.scroll").smoothWheel();
           } 
         })
-        $("main").smoothWheel();
+        $("#main.scroll").smoothWheel();
       });
     </script>
     <!--  -->

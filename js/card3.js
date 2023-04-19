@@ -216,6 +216,7 @@
             self._transformOriginLeft();
           }
           */
+          $("#main").removeClass("scroll")
           console.log('DRAG START');
           ionic.requestAnimationFrame(function () {
             self._doDragStart(e);
@@ -348,15 +349,17 @@
                 onDestroy: function () {
                   $timeout(function () {
                     // 이것만 수정 imgCount
+                    $("#main").addClass("scroll")
                     const imgCount = 4;
                     const y = 4 * (imgCount - 1);
                     // $scope.onDestroy();
                     $($element).css({
                       transform: `translate3d(0px, ${String($($element).index() * 20)}px, 0px) rotate(0rad)`,
                     });
+                    console.log($($element).attr("class"))
                     if($($element).attr("class") === 'card-0'){
                       $($element).removeClass('card-0');
-                      $($element).insertAfter('#tdCards .td-cards  td-card:last-child');
+                      $($element).insertAfter('#tdCards .td-cards  td-card:last-of-type');
                       for (let i = 0; i < imgCount; i++) {
                         $('#tdCards')
                           .children()
