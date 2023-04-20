@@ -3,6 +3,50 @@
 @import url(./profile.css);
 @import url(./webtoon.css);
 @import url(./gallery.css);
+@import url(./swiper.css);
+@import url(./swiper.min.css);
+
+@keyframes width {
+  0% { width: 0 }
+  100% { width: calc(100% - 10px); }
+}
+@-webkit-keyframes width {
+  0% { width: 0 }
+  100% { width: calc(100% - 10px); }
+}
+@-moz-keyframes width {
+  0% { width: 0 }
+  100% { width: calc(100% - 10px); }
+}
+@-ms-keyframes width {
+  0% { width: 0 }
+  100% { width: calc(100% - 10px); }
+}
+@-o-keyframes width {
+  0% { width: 0 }
+  100% { width: calc(100% - 10px); }
+}
+
+@keyframes opacity {
+  0% { opacity: 0 }
+  100% {  opacity: 1 }
+}
+@-webkit-keyframes opacity {
+  0% { opacity: 0 }
+  100% {  opacity: 1 }
+}
+@-moz-keyframes opacity {
+  0% { opacity: 0 }
+  100% {  opacity: 1 }
+}
+@-ms-keyframes opacity {
+  0% { opacity: 0 }
+  100% {  opacity: 1 }
+}
+@-o-keyframes opacity {
+  0% { opacity: 0 }
+  100% {  opacity: 1 }
+}
 
 @font-face {
   font-family: 'SF-Pro-Text-Light';

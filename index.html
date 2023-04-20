@@ -8,7 +8,7 @@
     <meta name="description" content="안녕하세요 웹툰작가 카리보의 작업물 아카이빙입니다.">
     <meta name="author" content="CARIBO">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kimajksldq.github.io/test_caribo" />
+    <meta property="og:url" content="https://caribo.me" />
     <meta property="og:title" content="웹툰작가 카리보 포트폴리오">
     <meta property="og:image" content="./img/thumbnail.jpg">
     <meta property="og:description" content="안녕하세요 웹툰작가 카리보의 작업물 아카이빙입니다.">
@@ -16,6 +16,7 @@
     <meta property="og:locale" content="en_US">
     <meta name="google-site-verification" content="al2TR8ofBW3b_Ia-uvwNrmpv85Zcs0VL6Fzof0Is7Jc" />
     <title>웹툰작가 카리보 포트폴리오</title>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="./js/lottie.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery.smoothwheel.js"></script>
@@ -40,6 +41,57 @@
     <div id="loadingWrap">
       <div class="bg"></div>
       <lottie-player src="./img/pencil.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay></lottie-player>
+    </div>
+    <div id="swiperWrap">
+      <div class="bg"></div>
+      <button class="close__btn"></button>
+      <section class="mySwiper swiper-container home__section section">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="img__box">
+              <img
+              src="./img/test_img1.jpg"
+              alt="첫번째 배너 이미지입니다."
+            />
+            </div>
+            <article class="slide__inner">
+              <!-- <h2 class="f__bold notosansKr">오토배너 첫번째 페이지입니다.</h2> -->
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <div class="img__box">
+              <img
+              src="./img/test_img2.jpg"
+              alt="첫번째 배너 이미지입니다."
+            />
+            </div>
+            <article class="slide__inner">
+              <!-- <h2 class="f__bold notosansKr">오토배너 두번째 페이지입니다.</h2> -->
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <div class="img__box">
+              <img
+              src="./img/test_img3.jpg"
+              alt="첫번째 배너 이미지입니다."
+            />
+            </div>
+            <article class="slide__inner">
+              <!-- <h2 class="f__bold notosansKr">오토배너 세번째 페이지입니다.</h2> -->
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <div class="img__box">
+              <img
+              src="./img/test_img4.jpg"
+              alt="첫번째 배너 이미지입니다."
+            />
+            </div>
+            <article class="slide__inner">
+              <!-- <h2 class="f__bold notosansKr">오토배너 네번째 페이지입니다.</h2> -->
+            </article>
+          </div>
+        </div>
     </div>
     <nav>
       <ul>
@@ -252,7 +304,7 @@
                     <div class="yes-text">LIKE</div>
                   </div>
                 </td-card>
-                <p class="notice">이미지를 넘기거나 클릭하세요.</p>
+                <p class="notice">카드 이미지를 넘기거나 클릭해보세요</p>
               </td-cards>
             </ion-pane>
           </div>
@@ -260,150 +312,8 @@
         <!-- // 갤러리 -->
       </div>
     </main>
-    <script>
-      $(document).ready(function () {
-        let scrollY = 0;
-        let screenHeight = screen.height;
-        const sectionArray  = [
-          $("#section1"),
-          $("#section2"),
-          $("#section3"),
-          $("#section4"),
-          $("#section5"),
-          $("#section6"),
-        ]
-
-        $("nav ul>li>.icon").click(function () {
-          const idx = $(this).parent().index();
-          if(scrollY < idx) {
-            $('#main').animate({scrollTop : sectionArray[idx][0].offsetTop + 10 }, 400);
-          } else {
-            $('#main').animate({scrollTop : sectionArray[idx][0].offsetTop - 10  }, 400);
-            $('#main').animate({scrollTop : sectionArray[idx][0].offsetTop + 0.0001 }, 10);
-          }
-        });
-
-        let lastScrollY = 0;
-        $("#main.scroll").scroll(function(){
-            const lScrollY = $("#main").scrollTop();
-            // 이전의 스크롤 위치와 비교하기
-            const direction = lScrollY > lastScrollY ? "Scroll Down" : "Scroll Up";
-             // 현재의 스크롤 값을 저장
-            lastScrollY = lScrollY;
-            if(direction === "Scroll Down"){
-              for(let i = 0 ; i < sectionArray.length ; i ++) {
-                if(sectionArray[i][0].offsetTop - 20 < $("#main").scrollTop()) {
-                  if(scrollY < i) {
-                    scrollY = i;
-                    activeSection(i)
-                  } 
-                } else {
-                  if($("#main").scrollTop() === 0) {
-                    scrollY = 0
-                    activeSection(0)
-                  }
-                  if(scrollY > i) {
-                    scrollY = i
-                    activeSection(i)
-                  } 
-                }
-              } 
-            } else if (direction === "Scroll Up") {
-              for(let i = 0 ; i < sectionArray.length ; i ++) {
-                if(sectionArray[i][0].offsetTop + $(sectionArray[i][0]).height() / 2 < $("#main").scrollTop()) {
-                  if(scrollY < i) {
-                    scrollY = i;
-                    activeSection(i)
-                  } 
-                } else {
-                  if($("#main").scrollTop() === 0) {
-                    scrollY = 0
-                    activeSection(0)
-                  }
-                  if(scrollY > i) {
-                    scrollY = i
-                    activeSection(i)
-                  } 
-                }
-              } 
-            }
-        })
-
-        const activeSection = (idx) => {
-          $("nav ul>li").removeClass("on")
-          $("#main>.inner>section").removeClass("on")
-          $("nav ul>li").eq(idx).addClass("on")
-          $("#main>.inner>section").eq(idx).addClass("on")
-        }
-
-        $(window).resize(function(){
-          if(screenHeight < $(window).height()){
-            screenHeight = $(window).height()
-            $("#main.scroll").smoothWheel();
-          } 
-        })
-        $("#main.scroll").smoothWheel();
-      });
-    </script>
-    <!--  -->
-     <script>
-      angular
-        .module('starter', ['ionic', 'ionic.contrib.ui.tinderCards'])
-
-        .directive('noScroll', function ($document) {
-          return {
-            restrict: 'A',
-            link: function ($scope, $element, $attr) {
-              $document.on('touchmove', function (e) {
-                e.preventDefault();
-              });
-            },
-          };
-        })
-
-        .controller('CardsCtrl', function ($scope, TDCardDelegate) {
-          console.log('CARDS CTRL');
-          var cardTypes = [
-            {
-              image:
-                './img/test_img.jpg',
-            },
-            {
-              image:
-                './img/test_img.jpg',
-            },
-            {
-              image: './img/test_img.jpg',
-            },
-            {
-              image:
-                './img/test_img.jpg',
-            },
-          ];
-
-          $scope.cards = Array.prototype.slice.call(cardTypes, 0);
-
-          $scope.cardDestroyed = function (index) {
-            $scope.cards.splice(index, 1);
-          };
-
-          $scope.addCard = function () {
-            var newCard = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-            newCard.id = Math.random();
-            $scope.cards.push(angular.extend({}, newCard));
-          };
-        })
-
-        .controller('CardCtrl', function ($scope, TDCardDelegate) {
-          $scope.cardSwipedLeft = function (index) {
-            console.log('LEFT SWIPE');
-            $scope.addCard();
-          };
-          $scope.cardSwipedRight = function (index) {
-            console.log('RIGHT SWIPE');
-            $scope.addCard();
-          };
-        });
-    </script>
+    <script src="./js/cardInit.js"></script>
+    <script src="./js/swiper.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
