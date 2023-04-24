@@ -58,36 +58,20 @@ section.s1 > .inner > .wrap > dl dt span > img {
 }
 
 section.s1 > .inner > .wrap > dl dd {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   margin-top: 24px;
-}
-
-section.s1 > .inner > .wrap > dl dd small {
-  font-size: 1.2rem;
-  margin-bottom: 12px;
+  font-size: 1.8rem;
   position: relative;
   top: 20px;
   opacity: 0;
   -webkit-transition: all 0.2s ease-in-out 0.25s;
 }
-
-section.s1 > .inner > .wrap > dl dd strong {
-  font-size: 1.8rem;
-  position: relative;
-  top: 20px;
-  opacity: 0;
-  -webkit-transition: all 0.2s ease-in-out 0.35s;
-}
-
-section.s1 > .inner > .wrap > dl dd strong b {
+section.s1 > .inner > .wrap > dl dd b {
   color: white;
 }
 
 section.s1.on .inner > .wrap > dl dt span,
-section.s1.on > .inner > .wrap > dl dd small,
-section.s1.on > .inner > .wrap > dl dd strong {
+section.s1.on > .inner > .wrap > dl dd {
   top: 0px;
   opacity: 1;
 }
@@ -126,7 +110,6 @@ section.s1 > .inner > .wrap > ul > li > dl {
 }
 
 section.s1 > .inner > .wrap > ul > li > dl dt {
-  font-style: italic;
   opacity: 0.6;
 }
 

@@ -17,17 +17,45 @@ main > .inner > section.on > .inner > img {
 main > .inner > section > .inner > dl {
   position: absolute;
   left: 50%;
-  bottom: 40px;
+  bottom: -110px;
   -webkit-transform: translateX(-50%);
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-main > .inner > section > .inner > dl dt {
+main > .inner > section > .inner > dl dt img {
   max-width: 320px;
+}
+main > .inner > section > .inner > dl dt {
   position: relative;
   opacity: 0;
   top: 30px;
+  width: 100%;
+  text-align: center;
   -webkit-transition: all 0.35s ease-in 0s;
 }
+
+main > .inner > section > .inner > dl dt > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main > .inner > section > .inner > dl dt > ul li:first-of-type {
+  /* margin-top: 0px; */
+  font-size: 1.1rem;
+  color: #646464;
+}
+
+main > .inner > section > .inner > dl dt > ul li {
+  text-align: center;
+  line-height: 1.62;
+  font-size: 1rem;
+  margin-top: 20px;
+  white-space: nowrap;
+}
+
 main > .inner > section.on > .inner > dl dt {
   opacity: 1;
   top: 0;
@@ -39,7 +67,7 @@ main > .inner > section > .inner > dl dt > img {
 main > .inner > section > .inner > dl dd ul {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 main > .inner > section > .inner > dl dd ul li {
   margin-left: 32px;
@@ -50,28 +78,28 @@ main > .inner > section > .inner > dl dd ul li {
   background: white;
   padding: 8px;
   border-radius: 100px;
-  box-shadow: 0 10px 20px -6px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
   -webkit-transition: all 0.15s ease-in-out 0.35s;
 }
-main > .inner > section > .inner > dl dd ul li.naver{
-  background: #00DC64;
-  box-shadow: 0 10px 20px -6px #00DC64;
+main > .inner > section > .inner > dl dd ul li.naver {
+  background: #00dc64;
+  box-shadow: 0 10px 20px -6px #00dc64;
 }
-main > .inner > section > .inner > dl dd ul li.kakao{
-  background: #FFBC00;
-  box-shadow: 0 10px 20px -6px #FFBC00;
+main > .inner > section > .inner > dl dd ul li.kakao {
+  background: #ffbc00;
+  box-shadow: 0 10px 20px -6px #ffbc00;
 }
-main > .inner > section > .inner > dl dd ul li.bomtoon{
-  background: #FF33AC;
-  box-shadow: 0 10px 20px -6px #FF33AC;
+main > .inner > section > .inner > dl dd ul li.bomtoon {
+  background: #ff33ac;
+  box-shadow: 0 10px 20px -6px #ff33ac;
 }
-main > .inner > section > .inner > dl dd ul li.lezhin{
-  background: #EB1C22;
-  box-shadow: 0 10px 20px -6px #EB1C22;
+main > .inner > section > .inner > dl dd ul li.lezhin {
+  background: #eb1c22;
+  box-shadow: 0 10px 20px -6px #eb1c22;
 }
-main > .inner > section > .inner > dl dd ul li.ktoon{
-  background: #FCCC30;
-  box-shadow: 0 10px 20px -6px #FCCC30;
+main > .inner > section > .inner > dl dd ul li.ktoon {
+  background: #fccc30;
+  box-shadow: 0 10px 20px -6px #fccc30;
 }
 
 /* main > .inner > section > .inner > dl dd ul li:hover {
@@ -103,14 +131,20 @@ main > .inner > section > .inner > dl dd ul li a img {
 }
 
 @media screen and (max-width: 1536px) {
-  main > .inner > section > .inner > dl dt {
+  main > .inner > section > .inner > dl dt img {
     max-width: 240px;
   }
 }
 @media screen and (max-width: 650px) {
   main > .inner > section > .inner > dl dd ul li {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-left: 22px;
+  }
+  main > .inner > section > .inner > dl dt > ul li:first-of-type {
+    font-size: 1rem;
+  }
+  main > .inner > section > .inner > dl dt > ul li {
+    white-space: normal;
   }
 }
