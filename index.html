@@ -14,7 +14,6 @@
     <meta property="og:description" content="안녕하세요 웹툰작가 카리보의 작업물 아카이빙입니다." />
     <meta property="og:site_name" content="카리보의 작업물 아카이빙" />
     <meta property="og:locale" content="en_US" />
-    <meta name="google-site-verification" content="al2TR8ofBW3b_Ia-uvwNrmpv85Zcs0VL6Fzof0Is7Jc" />
     <title>웹툰작가 카리보 포트폴리오</title>
     <script src="./js/swiper.min.js"></script>
     <script src="./js/lottie.js"></script>
@@ -33,7 +32,7 @@
       let completedImgCnt = 0;
       const loadingImg = () => {
         completedImgCnt = completedImgCnt + 1;
-        if (completedImgCnt === 16) {
+        if (completedImgCnt === 18) {
           $('#loadingWrap').addClass('open');
         }
       };
@@ -138,6 +137,12 @@
           <span class="icon"></span>
           <span>
             <p class="f__tb">오해가 계속되면 오예입니다.</p>
+          </span>
+        </li>
+        <li>
+          <span class="icon"></span>
+          <span>
+            <p class="f__tb">DEAD TO THE WORLD</p>
           </span>
         </li>
         <li>
@@ -379,8 +384,47 @@
           </div>
         </section>
         <!-- // 오해가 계속되면 오예입니다  -->
-        <!-- 갤러리 -->
+        <!-- Dead to the World -->
         <section id="section6">
+          <div class="inner">
+            <img
+              onload="loadingImg()"
+              id="img8"
+              src="./img/section6/poster.png"
+              alt="Dead to the World 포스터"
+            />
+            <dl>
+              <dt>
+                <img
+                  onload="loadingImg()"
+                  id="img9"
+                  src="./img/section6/logo.png"
+                  alt="Dead to the World 로고"
+                />
+                <ul>
+                  <li class="f__yun">
+                    특이한 기면증에 걸린 A와 그를 간병하는 친구 B의 이야기
+                  </li>
+                </ul>
+              </dt>
+              <dd>
+                <ul>
+                  <li class="naver2">
+                    <a
+                      href="https://comic.naver.com/bestChallenge/list?titleId=516775"
+                      target="_blank"
+                    >
+                      <img src="./img/naver2.svg" alt="네이버 웹툰 로고" />
+                    </a>
+                  </li>
+                </ul>
+              </dd>
+            </dl>
+          </div>
+        </section>
+        <!-- // Dead to the World  -->
+        <!-- 갤러리 -->
+        <section id="section7">
           <div class="inner" ng-app="starter" no-scroll>
             <ion-pane ng-controller="CardsCtrl">
               <!-- <ion-header-bar class="bar-default">

@@ -8,6 +8,7 @@ $(document).ready(function () {
     $('#section4'),
     $('#section5'),
     $('#section6'),
+    $('#section7'),
   ];
 
   $('td-card').click(function () {

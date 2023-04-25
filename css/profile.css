@@ -108,9 +108,17 @@ section.s1 > .inner > .wrap > ul > li > dl {
   justify-content: space-between;
   font-size: 1.3rem;
 }
-
-section.s1 > .inner > .wrap > ul > li > dl dt {
-  opacity: 0.6;
+section.s1 > .inner > .wrap > ul > li:nth-of-type(1) > dl dt{
+  color: #00D96C;
+}
+section.s1 > .inner > .wrap > ul > li:nth-of-type(2) > dl dt{
+  color: #2C96D4
+}
+section.s1 > .inner > .wrap > ul > li:nth-of-type(3) > dl dt{
+  color: #ebdc13;
+}
+section.s1 > .inner > .wrap > ul > li:nth-of-type(4) > dl dt{
+  color: #AA35B1
 }
 
 section.s1.on > .inner > .wrap > ul > li:after {
