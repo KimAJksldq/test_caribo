@@ -52,9 +52,6 @@ section.contactus > .inner form > div ul li span:after{
 section.contactus.on > .inner form > div ul li span:after{
   -webkit-transform: scaleX(0);
 }
-section.contactus.on > .inner form > div ul li label:after{
-  width: 50px;
-}
 section.contactus > .inner form > div ul li input::-webkit-outer-spin-button,
 section.contactus > .inner form > div ul li input::-webkit-inner-spin-button{
   -webkit-appearance: none;

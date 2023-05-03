@@ -12,9 +12,34 @@ $(document).ready(function () {
     }, 3000);
   }
 
+  let userAgent = navigator.userAgent;
+  let isPC = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+  
+  if (isPC) {
+    $(window).resize(function () {
+      if (screenHeight < $(window).height()) {
+        screenHeight = $(window).height();
+        $('#main.scroll').smoothWheel();
+      }
+    });
+    $('#main.scroll').smoothWheel();
+  } else {
+    const wh = $(window).height();
+    $(window).resize(function () {
+      if(wh === $(document).height()) {
+        $('#main')[0].scrollTo(0,999999);
+      }
+    });
+  }
+
+  $("#testP").click(function(){
+    $('#main').animate({ scrollTop: sectionArray[7][0].offsetTop + 10 }, 400);
+  })
+
   const form = document.getElementById('contactForm');
-  form.addEventListener('submit', async (e) => {
+  $("#submitBtn").click(function(e){
     e.preventDefault();
+    console.log("클릭")
     const v1 = $("#subjectInput").val();
     const v2 = $("#titleInput").val();
     const v3 = $("#emailInput").val();
@@ -80,27 +105,30 @@ $(document).ready(function () {
     }
 
     try {
-      const res = await fetch ('https://port-0-email-service-687p2alh73yb2l.sel4.cloudtype.app/send', {
+      fetch ('https://port-0-email-service-687p2alh73yb2l.sel4.cloudtype.app/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(param),
       })
-      if(res.ok) {
+      .then((response) => response.text())
+      .then((text) => {
         $("#titleInput").val("");
         $("#emailInput").val("");
         $("#phoneInput").val("");
         $("#bodyInput").val("");
         alert("메일 전송되었습니다!");
-      } else {
+        $(".loadingWrap.email").addClass("open");
+      })
+      .catch((error) => {
         alert("메일 전송이 실패했습니다.");
-      };
-      $(".loadingWrap.email").addClass("open");
+        $(".loadingWrap.email").addClass("open");
+      });
     } catch (error) {
       alert("메일 전송이 실패했습니다.");
       $(".loadingWrap.email").addClass("open");
     }
-
   })
+  // 
   
   const sectionArray = [
     $('#section1'),
@@ -223,11 +251,4 @@ $(document).ready(function () {
     $('#main>.inner>section').eq(idx).addClass('on');
   };
 
-  $(window).resize(function () {
-    if (screenHeight < $(window).height()) {
-      screenHeight = $(window).height();
-      $('#main.scroll').smoothWheel();
-    }
-  });
-  $('#main.scroll').smoothWheel();
 });
