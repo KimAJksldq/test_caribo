@@ -50,7 +50,7 @@ $(document).ready(function () {
       body : `
       <div style="margin: 16px 0 0 0; padding: 12px 12px 60px 12px;box-sizing: border-box;">
         <div style="padding: 34px; box-sizing: border-box;background: #fff;border-radius: 12px;box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);">
-          <h1 style="margin: 0;padding: 0; color: #414141;">'OOO'님의 사이트로부터 문의 메일이 도착했습니다.</h1>
+          <h1 style="margin: 0;padding: 0; color: #414141;">'카리보'님의 사이트로부터 문의 메일이 도착했습니다.</h1>
           <p style="color: #999; margin: 8px 0 34px 0; padding: 0;">메일 내용은 아래와 같습니다.</p>
       
           <ul style="list-style: none;margin: 0 0 38px 0;padding: 0 0 18px 0; border-bottom: 1px solid rgb(231, 231, 231);">
